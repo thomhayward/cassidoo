@@ -5,3 +5,7 @@ version = 3
 [[package]]
 name = "all-unique"
 version = "0.1.0"
+
+[[package]]
+name = "week260-swap-pairs"
+version = "0.1.0"
