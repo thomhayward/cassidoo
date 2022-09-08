@@ -1,5 +1,6 @@
 [workspace]
 members = [
   "week250-all-unique",
-  "week260-swap-pairs"
+  "week260-swap-pairs",
+  "week264-fromto"
 ]
