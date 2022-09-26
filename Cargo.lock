@@ -13,3 +13,7 @@ version = "0.1.0"
 [[package]]
 name = "week264-fromto"
 version = "0.1.0"
+
+[[package]]
+name = "week267-ordinal-suffix"
+version = "0.1.0"
