@@ -3,5 +3,6 @@ members = [
   "week250-all-unique",
   "week260-swap-pairs",
   "week264-fromto",
-  "week267-ordinal-suffix"
+  "week267-ordinal-suffix",
+  "week270-passes"
 ]
