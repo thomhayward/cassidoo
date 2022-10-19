@@ -1,6 +1,6 @@
 pub fn pass_doors(doors: usize, passes: usize) -> usize {
-    let mut doors = vec![false; doors];
-    for pass in 1..(passes + 2) {
+    let mut doors = vec![true; doors];
+    for pass in 2..(passes + 2) {
         for (i, door) in doors.iter_mut().enumerate() {
             if i % pass == 0 {
                 *door = !*door;
