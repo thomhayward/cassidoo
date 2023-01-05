@@ -11,7 +11,7 @@ where
     if n == 0 || n > arr.len() {
         &[]
     } else {
-        &arr.windows(n)
+        arr.windows(n)
             .map(|window| (window, window.iter().sum::<T>()))
             .max_by_key(|(_, sum)| *sum)
             .map(|(window, _)| window)
