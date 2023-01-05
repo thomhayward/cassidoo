@@ -5,7 +5,7 @@ pub fn pass_doors(doors: usize, passes: usize) -> usize {
             *door = !*door;
         }
     }
-    doors.iter().map(|&door| if door { 1 } else { 0 }).sum()
+    doors.iter().map(|&door| usize::from(door)).sum()
 }
 
 #[cfg(test)]
