@@ -5,7 +5,7 @@
 /// # Example
 ///
 /// ```
-/// # use week260_swap_pairs::iters::*;
+/// # use week260::iters::*;
 /// let values = vec!['o', 'l', 'e', 'r', 'm'];
 /// let swapped = values.swap_pairs().collect::<Vec<_>>();
 /// assert_eq!(swapped, &['l', 'o', 'r', 'e', 'm']);

@@ -7,7 +7,7 @@ pub fn replace_zeros(s: &str) -> String {
 ///
 /// Example:
 /// ```
-/// # use week280_replace_zeros::*;
+/// # use week280::*;
 /// let mut out = replace_char_with_count("l3aaat".chars(), 'a');
 /// assert_eq!(out.next(), Some('l'));
 /// assert_eq!(out.next(), Some('3'));

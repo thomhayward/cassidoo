@@ -3,7 +3,7 @@
 ///
 /// Example:
 /// ```
-/// # use week267_ordinal_suffix::ordinal;
+/// # use week267::ordinal;
 /// assert_eq!(ordinal(3), "3rd");
 /// assert_eq!(ordinal(57), "57th");
 /// ```
@@ -15,7 +15,7 @@ pub fn ordinal(n: u64) -> String {
 ///
 /// Example:
 /// ```
-/// # use week267_ordinal_suffix::ordinal_indicator;
+/// # use week267::ordinal_indicator;
 /// assert_eq!(ordinal_indicator(1), "st");
 /// assert_eq!(ordinal_indicator(2), "nd");
 /// assert_eq!(ordinal_indicator(12), "th");
