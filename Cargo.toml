@@ -7,5 +7,6 @@ members = [
   "week270-passes",
   "week280-replace-zeros",
   "week281-max-subarray",
-  "week282-sum-every-other"
+  "week282-sum-every-other",
+  "week284-missing-bits"
 ]
