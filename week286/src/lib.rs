@@ -14,24 +14,27 @@
 /// column name is more than `u32::MAX` character long.
 ///
 pub fn column_name_to_number(name: &str) -> usize {
-	let mut column_index = 0;
-	for (position, column_letter) in name.chars().rev().enumerate() {
-		let Some(index) = ('A'..='Z').position(|x| x == column_letter).map(|x| x + 1) else {
-			panic!("Column name should only include ascii A-Z");
+	let mut column_number = 0;
+	for (position, letter) in name.chars().rev().enumerate() {
+		let Some(index) = ALPHA.iter().position(|x| x == &letter) else {
+			panic!("Invalid character in column name");
 		};
-		column_index += index
-			* 26_usize.pow(
-				position
-					.try_into()
-					.expect("Column names should generally be less than ~4 billion letters long"),
-			);
+		if position >= u32::MAX as usize {
+			panic!("Column name exceeds maxiumn length")
+		}
+		column_number += (index + 1) * ALPHA.len().pow(position as u32);
 	}
-	column_index
+	column_number
 }
+
+const ALPHA: &[char] = &[
+	'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
+	'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+];
 
 #[cfg(test)]
 mod tests {
-	use super::column_name_to_number;
+	use crate::column_name_to_number;
 	#[test]
 	fn example1() {
 		assert_eq!(column_name_to_number("A"), 1);
