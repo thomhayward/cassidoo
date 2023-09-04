@@ -2,20 +2,21 @@
 //!
 //! # Problem
 //!
-//! Given an array of integers and a number k (where k is guaranteed to be
-//! less than the array's length), return a subarray of length k with the
-//! minimum possible sum. Maintain the order of the original array!
+//! > Given an array of integers and a number k (where k is guaranteed to be
+//! > less than the array's length), return a subarray of length k with the
+//! > minimum possible sum. Maintain the order of the original array!
 
 use std::iter::Sum;
 
-/// Finds the sub-slice of `slice`, with `k` elements, which has the minimum
-/// sum of all sub-slices of length `k`
+/// Returns a sub-slice, of length k, from the given slice, where the sum of
+/// the elements in the sub-slice is the minimum sum of all sub-slices of
+/// length k.
 ///
-/// The order of the array is preserved in the returned slice.
+/// The order of the original slice is preserved in the returned slice.
 ///
 /// # Panics
 ///
-/// Panics if `k` is greater than the length of `slice`.
+/// Panics if k is greater than the length of the slice.
 ///
 pub fn min_subs<T: Copy + Sum + Ord>(slice: &[T], k: usize) -> &[T] {
 	assert!(
@@ -33,8 +34,8 @@ pub fn min_subs<T: Copy + Sum + Ord>(slice: &[T], k: usize) -> &[T] {
 		.map(|chunk| (chunk, chunk.iter().cloned().sum::<T>()))
 		.min_by_key(|(_, sum)| *sum);
 
-	// This unwrap can never panic. If `slice` is empty and `k` is non-zero,
-	// the initial assertion will fail.
+	// SAFETY: If `slice` is empty and `k` is non-zero, the initial assertion
+	// will fail.
 	let (min_sub, _) = unsafe { result.unwrap_unchecked() };
 	min_sub
 }

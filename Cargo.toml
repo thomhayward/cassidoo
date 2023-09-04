@@ -10,5 +10,5 @@ members = [
   "week282-sum-every-other",
   "week284-missing-bits",
   "week286",
-  "week316"
+  "week316-min-subs"
 ]
