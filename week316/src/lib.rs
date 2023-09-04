@@ -6,6 +6,8 @@
 //! less than the array's length), return a subarray of length k with the
 //! minimum possible sum. Maintain the order of the original array!
 
+use std::iter::Sum;
+
 /// Finds the sub-slice of `slice`, with `k` elements, which has the minimum
 /// sum of all sub-slices of length `k`
 ///
@@ -15,23 +17,24 @@
 ///
 /// Panics if `k` is greater than the length of `slice`.
 ///
-pub fn min_subs(slice: &[u32], k: usize) -> &[u32] {
+pub fn min_subs<T: Copy + Sum + Ord>(slice: &[T], k: usize) -> &[T] {
 	assert!(
 		k <= slice.len(),
 		"k must be less than or equal to slice length"
 	);
 
+	// Return an empty slice if `k` is zero.
 	if k == 0 {
 		return &[];
 	}
 
 	let result = slice
 		.windows(k)
-		.map(|chunk| (chunk, chunk.iter().sum::<u32>()))
+		.map(|chunk| (chunk, chunk.iter().cloned().sum::<T>()))
 		.min_by_key(|(_, sum)| *sum);
 
-	// This unwrap can never panic. If `slice` is empty the assertion will
-	// fail unless `k` is 0, in which case `.windows()` will panic instead.
+	// This unwrap can never panic. If `slice` is empty and `k` is non-zero,
+	// the initial assertion will fail.
 	let (min_sub, _) = unsafe { result.unwrap_unchecked() };
 	min_sub
 }
